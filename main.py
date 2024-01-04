@@ -81,7 +81,7 @@ def game():
             wrongTries += 1
 
             oldTries.append(currentTry)
-            communication.hangingManDrawing(wrongTries)
+            communication.hangmanDrawing(wrongTries)
             print("Old tries: ", end="")
             printList(oldTries)
             print("")

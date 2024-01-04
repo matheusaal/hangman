@@ -57,7 +57,7 @@ def loserMessage():
     print("       \\_______/           ")
 
 
-def hangingManDrawing(mistakes):
+def hangmanDrawing(mistakes):
 
     
     if (mistakes == 1):
