@@ -1,9 +1,16 @@
 def openingMessage():
 
-    print("\n*****************************\n\n")
-    print("  Welcome to Hangman Game!\n")
-    print("  Created by Matheus Avila.\n\n")
-    print("*****************************\n")
+    print("""
+             _    _                                         
+            | |  | |                                        
+            | |__| | __ _ _ __   __ _ _ __ ___   __ _ _ __  
+            |  __  |/ _` | '_ \ / _` | '_ ` _ \ / _` | '_ \ 
+            | |  | | (_| | | | | (_| | | | | | | (_| | | | |
+            |_|  |_|\__,_|_| |_|\__, |_| |_| |_|\__,_|_| |_|
+                                __/ |                      
+                                |___/     
+    """)
+                    
 
 
 def initialMenu():
@@ -69,7 +76,7 @@ def hangmanDrawing(mistakes):
         print("\t |       ")
         print("\t |       ")
         print("\t |              ")
-        print("\t_|___           \n\n")
+        print("\t_|___           \n")
         
     if (mistakes == 2):
 
@@ -80,7 +87,7 @@ def hangmanDrawing(mistakes):
         print("\t |       ")
         print("\t |       ")
         print("\t |              ")
-        print("\t_|___           \n\n")
+        print("\t_|___           \n")
 
     if (mistakes == 3):
 
@@ -91,7 +98,7 @@ def hangmanDrawing(mistakes):
         print("\t |       ")
         print("\t |       ")
         print("\t |              ")
-        print("\t_|___           \n\n")
+        print("\t_|___           \n")
         
 
     if (mistakes == 4):
@@ -103,7 +110,7 @@ def hangmanDrawing(mistakes):
         print("\t |       ")
         print("\t |       ")
         print("\t |              ")
-        print("\t_|___           \n\n")
+        print("\t_|___           \n")
         
     
     if (mistakes == 5):
@@ -115,7 +122,7 @@ def hangmanDrawing(mistakes):
         print("\t |       |")
         print("\t |      /")
         print("\t |              ")
-        print("\t_|___           \n\n")
+        print("\t_|___           \n")
         
 
     if (mistakes == 6):
@@ -127,4 +134,4 @@ def hangmanDrawing(mistakes):
         print("\t |       |")
         print("\t |      / \\")
         print("\t |              ")
-        print("\t_|___           \n\n")
+        print("\t_|___           \n")
