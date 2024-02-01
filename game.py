@@ -1,72 +1,78 @@
 import communication
 import support_functions
+import main
 
 def game():
 
-    secretWord = "Fish"
-    secretWordClass = "Food"
+    randomChoice = support_functions.randomWordClass()
+    secretWord, secretClass = randomChoice[0], randomChoice[1]
+    
+    print(secretWord)
+
     wrongTries = []
     oldTries = []
-    
+
+    leftTries = 6
+
     mask = support_functions.createMask(secretWord)
 
-    print("\nClass:", secretWordClass, "\n")
+    print("\nClass:", secretClass, "\n")
 
     while(True):
 
-        support_functions.printList(mask)
-
         # Verify defeat
-        if (wrongTries == 6):
+        if (leftTries == 0):
 
             communication.loserMessage()
-            communication.initialMenu()
-
+            print("\n\nThe secret word was:", secretWord)
             break
-
-        currentTry = input("Which letter do you choose? ")
-
-        # Right try logic
-        if (currentTry not in oldTries and currentTry in secretWord):
-
-            print("\n\nWell done! Right try. \n")
-            indexLetter = support_functions.findLettersIndex(secretWord, currentTry) # Find all index of a letter in the secret word
-            
-            for i in indexLetter:
-
-                mask[i] = currentTry # Change the "_" from the mask to the correct letter
-    
-            oldTries.append(currentTry) # Add the current try to a list containing all old tries
-            
-        # Wrong try logic
-        elif (currentTry not in oldTries and currentTry not in secretWord):
-
-            print("\nOoh! What a shame, your try is wrong.\n")
-
         
-            oldTries.append(currentTry) # Add the current try to a list containing all old tries
-            wrongTries.append(currentTry) #  Add the current try to a list containing just the wrong tries (to show them later)
+        support_functions.printList(mask)
 
-            leftTries = 6 - len(wrongTries) # Calculate the left tries using the size of the wrong tries list
-            wrongTriesQuantity = len(wrongTries) # Calculate the wrong tries amount using the size of the wrong tries list
+        currentTry = input("\n\nWhich letter do you choose? ").upper()
+    
+        if (not currentTry.isalpha()) or (len(currentTry) != 1) or (currentTry in oldTries):
 
-            communication.hangmanDrawing(wrongTriesQuantity) # Draws a hangman using wrong tries amount as a parameter
-
-            print("You have", leftTries, "tries left.\n")
-            print("Old tries: ", end="")
-
-            support_functions.printList(wrongTries)
-
-            print("\n")
+            print("\nYour attempt is invalid! Please, try again.\n")
 
         else:
 
-            print("\nYour attempt is invalid! Please, try again.")
+        # Right try logic
+            if (currentTry in secretWord):
 
-        # Verify victory
-        if (mask == support_functions.convertStringToList(secretWord)):
+                print("\nWell done! Right try. \n")
+                indexLetter = support_functions.findLettersIndex(secretWord, currentTry) # Find all index of a letter in the secret word
+                
+                for i in indexLetter:
 
-            communication.winnerMessage()
-            communication.initialMenu()
+                    mask[i] = currentTry # Change the "_" from the mask to the correct letter
+        
+                oldTries.append(currentTry) # Add the current try to a list containing all old tries
+                
+            # Wrong try logic
+            elif (currentTry not in secretWord):
+
+                print("\nOoh! What a shame, your try is wrong.\n")
+
             
-            break
+                oldTries.append(currentTry) # Add the current try to a list containing all old tries
+                wrongTries.append(currentTry) #  Add the current try to a list containing just the wrong tries (to show them later)
+
+                leftTries -= 1 # Calculate the left tries using the size of the wrong tries list
+                communication.hangmanDrawing(6 - leftTries) # Draws a hangman using wrong tries amount as a parameter
+
+                if (leftTries > 0):
+
+                    print("You have", leftTries, "tries left.\n")
+                    print("Old tries: ", end="")
+
+                    support_functions.printList(wrongTries)
+
+                print("\n")
+
+        
+            # Verify victory
+            if (mask == support_functions.convertStringToList(secretWord)):
+
+                communication.winnerMessage()
+                break

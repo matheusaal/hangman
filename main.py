@@ -2,32 +2,21 @@ import communication
 import game
 
 def main():
-    
+
     communication.openingMessage()
 
-    option = communication.initialMenu()
+    while(True):
 
-    if (option == "1"):
+        option = communication.initialMenu()
 
-        game.game()
-    
-    if (option == "2"):
+        if (option == "1"):
 
-        pass
+            game.game()
+        
+        if (option == "2"):
 
-    if (option == "3"):
+            exit()
 
-        exit()
+if __name__ == "__main__":
 
-
-main()
-
-'''
-
-Falta para finalizar:
-
-- Banco de dados
-- Sensitive case
-- Resolver espaçamento lista de tentativas
-
-'''
+    main()

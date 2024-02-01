@@ -1,4 +1,5 @@
 import communication
+import random
 
 def convertStringToList(word):
 
@@ -37,8 +38,24 @@ def printList(list):
 
     for i in range(len(list)):
 
-        print(list[i], end="\t")
+        print(list[i], end=" ")
 
+def randomWordClass():
+
+    with open('randomWords.txt', 'r', encoding='utf-8') as wordsArchive:
+
+        lines = wordsArchive.readlines()
+
+        chosenLine = random.choice(lines)
     
+    secretWordClass = chosenLine.split(",")
+    secretWordClass[0] = secretWordClass[0].upper()
+    secretWordClass[1] = secretWordClass[1].strip()
+
+    return secretWordClass
+
+
+        
+        
 
 

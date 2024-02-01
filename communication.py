@@ -19,9 +19,7 @@ def initialMenu():
 
     print("1: Play a new game\n")
 
-    print("2: Register a new word and the respective class\n")
-
-    print("3: Exit\n")
+    print("2: Exit\n")
 
     return input("")
 
@@ -43,8 +41,8 @@ def winnerMessage():
 
 def loserMessage():
     
-    print("Wow, you lost the game!")
-    print("The secret word was: ")
+    print("Wow, you lost the game!\n")
+    
 
     print("    _______________         ")
     print("   /               \\       ")
