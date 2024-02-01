@@ -6,8 +6,6 @@ def game():
 
     randomChoice = support_functions.randomWordClass()
     secretWord, secretClass = randomChoice[0], randomChoice[1]
-    
-    print(secretWord)
 
     wrongTries = []
     oldTries = []
@@ -16,7 +14,7 @@ def game():
 
     mask = support_functions.createMask(secretWord)
 
-    print("\nClass:", secretClass, "\n")
+    print("\nClass:", secretClass)
 
     while(True):
 
